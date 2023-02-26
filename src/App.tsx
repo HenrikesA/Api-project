@@ -6,7 +6,7 @@ import axios from "axios";
 function App() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
-  const [showCount, setShowCount] = useState(8);
+  const [showCount, setShowCount] = useState(9);
 
   useEffect(() => {
     axios
@@ -14,9 +14,11 @@ function App() {
 
       .then((response) => {
         const countriesWithLinks = response.data.map((country: any) => ({ ...country, wikiLink: `https://en.wikipedia.org/wiki/${country.name.common}`}))
+        
+        const sortedCountries = countriesWithLinks.sort((a:any, b:any) => a.name.common.localeCompare(b.name.common));
 
-        setCountries(countriesWithLinks)
-        setFilteredCountries(countriesWithLinks)
+        setCountries(sortedCountries)
+        setFilteredCountries(sortedCountries)
       })
 
       .catch((error) => console.log(error))

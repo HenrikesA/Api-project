@@ -19,7 +19,7 @@ export type Country = {
 function CountryData({ countries }: Props) {
   const [countriess, setCountries] = useState<Country[]>([]);
   const [visibleCountries, setVisibleCountries] = useState<Country[]>([]);
-  const [showCount, setShowCount] = useState(8);
+  const [showCount, setShowCount] = useState(9);
 
   useEffect(() => {
     axios.get("https://restcountries.com/v3.1/all").then((response) => {
@@ -39,7 +39,7 @@ function CountryData({ countries }: Props) {
     <div className="p-6 font-extrabold text-center">
         <table className="table-auto w-full">
             <thead>
-                <tr>
+                <tr className="border-b">
                     <th>Flag</th>
                     <th>Name</th>
                     <th>Capital</th>
@@ -51,27 +51,27 @@ function CountryData({ countries }: Props) {
 
             <tbody>
                 {visibleCountries.map((country) => (
-                 <tr key={country.name.common}>
-                <td className="grid py-5 place-items-center">
-                    <img
-                    src={country.flags.svg}
-                    alt={`Flag of ${country.name.common}`}
-                    className="w-24"
-                    />
-                </td>
+                  <tr className="border-b"  key={country.name.common}>
+                    <td className="grid py-5 place-items-center">
+                      <img
+                      src={country.flags.svg}
+                      alt={`Flag of ${country.name.common}`}
+                      className="w-24"
+                      />
+                    </td>
 
-                <td className="border">{country.name.common}</td>
-                <td className="border">{country.capital}</td>
-                <td className="border">{country.region}</td>
-                <td className="border">{country.population}</td>
+                    <td>{country.name.common}</td>
+                    <td>{country.capital}</td>
+                    <td>{country.region}</td>
+                    <td>{country.population}</td>
 
-                <td className="border w-24">
-                    <a href={country.wikiLink} target="_blank">
-                    ➡️
-                    </a>
-                </td>
-                </tr>
-            ))}
+                    <td className="w-24">
+                      <a href={country.wikiLink} target="_blank">
+                      ▶️
+                      </a>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
         </table>
 
