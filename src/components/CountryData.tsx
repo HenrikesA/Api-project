@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 interface Props {
-  countries: Country[];
-  showCounts: number;
-  handleLoadMore: () => void;
-}
+  countries: Country[]
+  showCounts: number
+  handleLoadMore: () => void
+};
 
 export type Country = {
   name: { common: string }
@@ -85,4 +85,4 @@ function CountryData({ countries }: Props) {
   );
 }
 
-export default CountryData;
+export default CountryData
