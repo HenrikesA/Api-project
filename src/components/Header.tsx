@@ -41,6 +41,6 @@ function Header(props: { countries: Country[]; setFilteredCountries: Function })
       </div>
     </div>
   )
-}
+};
 
 export default Header
